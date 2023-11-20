@@ -1,0 +1,13 @@
+{
+    "pkmntrainerfrost"  : {
+        "user_id"           : 0,
+        "username"          : "pkmntrainerfrost",
+        "displayname"       : "pkmntrainerfrost",
+        "email"             : "",
+        "password_hashed"   : "",
+        "salt"              : "",
+        "bio"               : "",
+        "likes"             : {},
+        "disabled"          : false
+    }
+}
