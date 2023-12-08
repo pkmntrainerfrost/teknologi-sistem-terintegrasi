@@ -36,6 +36,8 @@ async def create_commission(commission_id : str, user: User = Depends(current_ac
 
     await commission.save()
 
+    return commission
+
 @router.put("/{commission_id}/reject")
 async def reject_commission(commission_id : str, user: User = Depends(current_active_user)):
 
@@ -57,6 +59,8 @@ async def reject_commission(commission_id : str, user: User = Depends(current_ac
 
     await commission.save()
 
+    return commission
+
 @router.put("/{commission_id}/finish")
 async def finish_commission(commission_id : str, user: User = Depends(current_active_user)):
 
@@ -77,6 +81,8 @@ async def finish_commission(commission_id : str, user: User = Depends(current_ac
     commission.status = "FINISHED"
 
     await commission.save()
+
+    return commission
 
 @router.put("/{commission_id}/givefeedback")
 async def finish_commission(commission_id : str, feedback : CommissionFeedback, user: User = Depends(current_active_user)):
@@ -137,6 +143,8 @@ async def finish_commission(commission_id : str, feedback : CommissionFeedback, 
     await commissionslot.save()
 
     await commission.save()
+
+    return commission
 
 # Integration
 

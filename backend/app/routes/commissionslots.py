@@ -207,6 +207,8 @@ async def update_commissionslot(commissionslot_id : str, commissionslot_input : 
     # Save the updated CommissionSlot
     await commissionslot.save()
 
+    return commissionslot
+
 # Delete commissionslot (superuser only)
 @router.delete("/{commissionslot_id}")
 async def delete_commissionslot(commissionslot_id : str, user: User = Depends(current_active_user)):
@@ -254,8 +256,10 @@ async def create_commission(commissionslot_id : str, commission_input : Commissi
 
     await commission.insert()
 
+    return commission
+
 # Update TF-IDF value
-@router.get("/count/")
+@router.get("/refresh_tf_idf/")
 async def refresh_tf_idf():
 
     dfs = await Df.find_all().to_list()
@@ -335,5 +339,3 @@ async def refresh_tf_idf():
         
             new_tf_idf = TfIdf(slot=str(commissionslot.id),token=token,value=tf_idf)
             await new_tf_idf.insert()
-    
-    raise HTTPException(status_code=403, detail="You can't propose a commission to your own slot") 
