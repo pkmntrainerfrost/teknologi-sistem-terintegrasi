@@ -259,7 +259,7 @@ async def create_commission(commissionslot_id : str, commission_input : Commissi
     return commission
 
 # Update TF-IDF value
-@router.get("/refresh_tf_idf/")
+@router.put("/refresh_tf_idf/")
 async def refresh_tf_idf():
 
     dfs = await Df.find_all().to_list()
